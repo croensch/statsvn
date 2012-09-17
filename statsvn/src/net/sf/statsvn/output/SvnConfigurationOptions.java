@@ -71,6 +71,9 @@ public final class SvnConfigurationOptions {
 	// use the newer diff. will be overridden if this is not possible. 
 	private static boolean useLegacyDiff = false;
 
+	// for example: --ignore-all-space
+	private static String legacyDiffExtensions = null;
+
 	private static ISvnProcessor processor;
 
     private static boolean useSvnKit = false;
@@ -251,7 +254,25 @@ public final class SvnConfigurationOptions {
 	public static void setLegacyDiff(final boolean isLegacy) {
 		useLegacyDiff = isLegacy;
 	}
-	
+
+	/**
+	 * Should we use an extension to the svn command?
+	 */
+	public static String getLegacyDiffExtension()
+	{
+		return legacyDiffExtensions;
+	}
+
+	/**
+	 * Should we use an extension to the svn command?
+	 * 
+	 * @param extension
+	 */
+	public static void setLegacyDiffExtensions(final String extensions)
+	{
+		legacyDiffExtensions = extensions;
+	}
+
 	 /**
      * Should we use svnkit to query the repository
      * 

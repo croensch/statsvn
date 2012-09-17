@@ -30,4 +30,16 @@ public final class SvnCommandHelper {
 		return strAuth.toString();
 	}
 
+	/**
+	 * Gets the Extension / PAR command part to use when invoking the subversion binary
+	 * 
+	 * @return A String combining the -x with the extension switch
+	 */
+	public static String getLegacyDiffExtensionsString() {
+		final StringBuffer strExtensions = new StringBuffer();
+		if (SvnConfigurationOptions.isLegacyDiff() && (SvnConfigurationOptions.getLegacyDiffExtension() != null)) {
+			strExtensions.append(" --extensions ").append(SvnConfigurationOptions.getLegacyDiffExtension());
+		}
+		return strExtensions.toString();
+	}
 }

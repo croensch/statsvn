@@ -61,7 +61,7 @@ public class SvnDiffUtils implements ISvnDiffProcessor {
 		String svnDiffCommand = null;
 		filename = getProcessor().getInfoProcessor().relativePathToUrl(filename);
 		filename = StringUtils.replace(" ", "%20", filename);
-		svnDiffCommand = "svn diff --old " + filename + "@" + oldRevNr + "  --new " + filename + "@" + newRevNr + "" + SvnCommandHelper.getAuthString();
+		svnDiffCommand = "svn diff --old " + filename + "@" + oldRevNr + "  --new " + filename + "@" + newRevNr + "" + SvnCommandHelper.getAuthString() + SvnCommandHelper.getLegacyDiffExtensionsString();
 		SvnConfigurationOptions.getTaskLogger().log(Thread.currentThread().getName() + " FIRING command line:\n[" + svnDiffCommand + "]");
 		return ProcessUtils.call(svnDiffCommand);
 	}

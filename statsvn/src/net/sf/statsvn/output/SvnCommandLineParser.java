@@ -93,6 +93,11 @@ public class SvnCommandLineParser extends CommandLineParser {
             SvnConfigurationOptions.setUsingSvnKit(true);
 		} else if (s.equals("force-legacy-diff")) {
 			SvnConfigurationOptions.setLegacyDiff(true);
+		} else if (s.equals("legacy-diff-extensions")) {
+			if (isArgsEmpty()) {
+				throw new ConfigurationException("Missing argument for -legacy-diff-extensions");
+			}
+			SvnConfigurationOptions.setLegacyDiffExtensions(popNextArg());
 		} else {
 			return false;
 		}
